@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage{amsmath}
+%\usepackage{fullpage}
+\usepackage{amsthm}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{listings}
+\lstset{language=Ada, basicstyle=\ttfamily\small}
+
+\newtheorem*{thm}{Schiller/Whitney Similarity Theorem}
+
+\title{My \LaTeX{} Portfolio}
+\author{your name}
+\date{September 28, 2011}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+Well, three or four months run along, and it was well into the winter now. I had been to school most all the time and could spell and read and write just a little, and could say the multiplication table up to six times seven is thirty-five, and I don't reckon I could ever get any further than that if I was to live forever.  I don't take no stock in mathematics, anyway. \begin{flushright} {\large  --Huckleberry Finn} \end{flushright}
+\verb|Quote attribution typeset with \begin{flushright} {\large --Huckleberry Finn} \end{flushright}|
+
+\[
+\int \ln(t) \, \mathrm{d}t= t \ln(t) - \int 1\, \mathrm{d}t 	\qquad \text{(Integration by Parts)}
+\]
+\verb|Text can be accomplished inside math mode with \text{...}, but only if you load the package amsmath|
+\[
+\begin{bmatrix}
+	1 & 2 & 3 \\
+	0 & -6 & 7
+\end{bmatrix}^T =
+\begin{bmatrix}
+	1 & 0 \\
+	2 & -6 \\
+	3 & 7
+\end{bmatrix}
+\]
+\verb|Those are typeset with \begin{bmatrix}, and the `T' exponent is just a superscript|
+\begin{align*}
+a&=\sum_{n=0}^\infty (b_n-b_{n+1})\\
+&=\lim_{n \to \infty} (b_0 - b_1) + (b_1 -b_2) + \ldots + (b_{n-1} - b_k)\\
+&=\lim_{n \to \infty} (b_0-b_n) \hspace{2in} \text{(by Additive Cancellation)}
+\end{align*}
+\verb|For this, you will need the align* environment. Don't worry about centering until the end.|
+
+
+\[
+\frac{\sqrt{\frac{xy}{1}(\frac{1}{x}+\frac{1}{y})}}{\frac{xy}{2}\frac{1}{xy}}=\frac{\sqrt{y+x}}{\frac{1}{2}}=2\sqrt{x+y}
+\]
+\vspace{3ex}
+
+
+The difference quotient of a function $f$ around a point $a$ is defined as \( \displaystyle\lim_{x \to a} \frac{f(x)-f(a)}{x-a} \). Often, in beginning differential calculus, students are required to calculate derivatives this way. This is generally agreed to be a huge pain.
+\vspace{2ex}
+
+
+\verb|The expression in this paragraph is typeset using \displaystyle.|
+
+ \pagebreak
+ 
+\begin{thm} Let $A$ and $B$ be matrices. Then, $A$ and $B$ are similar.
+\begin{proof}
+Well, if $A$ and $B$ are both matrices, then they are boxes with numbers in them. So, they are similar in that way.
+\end{proof}
+\end{thm}
+\hspace{-0.8in} \verb|You will need the package `amsthm' and you will need to declare a new theorem with \newtheorem in the preamble.|
+
+\begin{center}
+\begin{tabular}{ c | c | c | c | c }
+\multicolumn{5}{  c }{modulo 4} \\
+ $\times$ & 0 & 1 & 2 & 3 \\
+	    \hline
+ 	    0 & 0 & 0 &  0 &0 \\
+	    \hline
+	    1 & 0 & 1 & 2 & 3 \\
+	    \hline
+	    2 & 0 & 2 & 0 & 2 \\
+	    \hline
+	    3 & 0 & 3 & 2 & 1\\
+\end{tabular}
+\end{center}
+\verb|This is the tabular environment, including a multicolumn line.|
+
+\begin{lstlisting}
+with Ada.Text_Io; use Ada.Text_Io;
+ 
+procedure Gcd_Test is
+   function Gcd (A, B : Integer) return Integer is
+      M : Integer := A;
+      N : Integer := B;
+      T : Integer;
+   begin
+      while N /= 0 loop
+         T := M;
+         M := N;
+         N := T mod N;
+      end loop;
+      return M;
+   end Gcd;
+ 
+begin
+   Put_Line("GCD of 100, 5 is" & Integer'Image(Gcd(100, 5)));
+   Put_Line("GCD of 5, 100 is" & Integer'Image(Gcd(5, 100)));
+   Put_Line("GCD of 7, 23 is" & Integer'Image(Gcd(7, 23)));
+end Gcd_Test;
+
+\end{lstlisting}
+
+\verb!This is the listings package, with the settings language=Ada, basicstyle=\ttfamily\small.!
+\verb|The code is available online at Rosetta Code.|
+\end{document}
