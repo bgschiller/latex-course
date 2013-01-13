@@ -1,7 +1,6 @@
 %This Document was created in April 2011 by Brian Schiller at Western Washington University
 %As the creator of this document, I make no claims to its copyright, and freely allow its duplication and distribution, as long as no profit is made.
 %Please share this with anyone you like, and feel free to make changes or additions.
-%Last Modified September 2, 2011 by Brian Schiller
 \documentclass[11pt]{article} 
 
 %begins paragraphs with an empty line instead of a tab.
@@ -26,8 +25,11 @@
 %preserves tabs in verbatim sections. Good for including source code in documents.
 \usepackage{moreverb}
 
-%Include collumns
+%Include columns
 \usepackage{multicol}
+
+%Source code presentation
+\usepackage{listings}
 
 %allows for \includegraphics
 \usepackage{graphicx}
@@ -212,6 +214,10 @@ This is typeset as
 	\end{align*}
 \end{verbatimtab}
 
+Note: the align environment is defined in the package \verb|amsmath|. In order to gain access to it, you will need to include the line
+\verb|\usepackage{amsmath}|
+in your preamble.
+
 \subsection{Matrices}
 Matrices work in much the same way as aligned equations. Using an \verb|&| between elements, and a \verb|\\| after each line, type
 \begin{verbatimtab}
@@ -276,7 +282,59 @@ You will often want a title or subtitle to a table which spans multiple columns.
 \end{verbatimtab}
 \end{multicols}
 
+\section{Code}
+\subsection{Source Code}
+The smoothest way I have found to include source code is with the package \verb|listings|.
+Put \verb|\usepackage{listings}| in your preamble. It is very configurable, and I usually refer to this page when I'm using it: \url{http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}.
+As a simple example:
+\begin{multicols}{2}
+\begin{verbatimtab}
+\lstset{language=Ada,
+numbers=left}
+\begin{lstlsting} 
+while numcopy /= 0 loop
+    sum:=sum + (numcopy mod 10);
+    numcopy:= numcopy/10; 
+end loop;
+\end{lstlisting}
+\end{verbatimtab}
+\columnbreak
+\lstset{language=Ada,
+numbers=left}
+\begin{lstlisting} 
+while numcopy /= 0 loop
+    sum:=sum + (numcopy mod 10);
+    numcopy:= numcopy/10; 
+end loop;
+\end{lstlisting}
+\end{multicols}
 
+It is also useful to include source code from another file, so that you don't have to update your latex file with every change to your code:
+\begin{verbatimtab}
+\lstinputlisting[language=Python]{path/to/code.py}
+\end{verbatimtab}
+
+\subsection{Pseudocode}
+The easiest way to do pseudocode in \LaTeX is with a package called \verb|moreverb|, which provides an environment called \verb|verbatimtab|. It reproduces everything (including tabs, spaces, and newlines) that is put between \verb|\begin{verbatimtab}| and \verb|\end{verbatimtab}|
+\begin{multicols}{2}
+\begin{verbatim}
+\begin{verbatimtab}
+while Q is not empty
+    x = Q.pop()
+    if x == 5
+        print 'success'
+\end{verbatimtab}
+\end{verbatim}
+\columnbreak
+\begin{verbatimtab}
+while Q is not empty
+    x = Q.pop()
+    if x == 5
+        print 'success'
+\end{verbatimtab}
+\end{multicols}
+
+There is also a package available from the authors of the CLRS Algorithms textbook that makes pseudocode identical to that in the book, but it's not very easy to use. The package is called clrscode3e, and its available at \url{http://www.cs.dartmouth.edu/~thc/clrscode/}. Since it's not part of the standard \LaTeX distribution or the package libraries, you'll have to download the .sty file and put it in the same folder as your .tex file.
 
 \section{Pictures}
 Pictures are a complicated topic in \LaTeX. To some extent, they are a bit beyond the scope of this introduction. However, in the simplest case, makes sure that you've loaded the package \verb|graphicx|, and that the picture you want to include is in the same folder as your .tex file. \verb|\includegraphics{image.jpg}|, or whatever the picture is called. Here is a picture of a pair of boots.
@@ -309,6 +367,8 @@ It's not a great idea to have a list of packages that you put at the start of ev
 
 \section{Other Things}
 Quotation marks in \LaTeX \,are tricky things. Using the usual key, \verb|"| from shift+apostrophe will look like "this," which is not necessarily desirable. instead, use \verb|`| or \verb|``| (found under the esc key) to open a quote, and apostrophe to close (\verb|'| or \verb|''|). This will look like ``this.''
+
+If you find that \LaTeX is running much slower than usual, check to see if you've opened your .tex file from a thumbdrive. It might speed things up to make a local copy on the hard drive and then copy it back the the thumbdrive when you're done.
 
 There are several case-sensitive commands to change text size. The text to be changed should be inside a declare block (within a set of curly braces) with the command at the beginning. Type \verb|{\footnotesize speak softly and carry a big stick}|, to produce {\footnotesize speak softly and carry a big stick}. See the table for comparisons of text sizes.
 

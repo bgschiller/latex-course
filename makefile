@@ -1,7 +1,9 @@
 all: student presentation
 
 book:
+	@pdflatex intro_to_latex.tex
 	pdflatex intro_to_latex.tex
+	#We have to run latex twice in order to get the sections to renumber and the table of contents to catch up
 
 presentation:
 	pdflatex latex_presentation.tex
@@ -21,7 +23,7 @@ student: book worksheet slides
 	cp latex_slides.pdf student_files/
 	cp vangogh_shoes.jpg student_files/
 	cp latex_worksheet.pdf student_files/
-	zip student_files.zip student_files/
+	zip latexcourse.zip student_files/
 
 #remove intermediate and by-product files
 neat:

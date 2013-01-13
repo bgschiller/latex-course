@@ -131,7 +131,7 @@ Hello, World.
 \verb|\usepackage[parfill]{parskip}|
 
 \item[]<1,4->\verb|%creates smaller margins|
-\verb|\usepackage[margins=1in]{geometry}|
+\verb|\usepackage[margin=1in]{geometry}|
 
 \item[]<1,5->\verb|%math commands and symbols|
 \verb|\usepackage{amsmath, amssymb}|
@@ -163,13 +163,10 @@ Hello, World.
 	\item[]<3-> Block comments require the use of the verbatim package.
 	\begin{verbatimtab}
 	\begin{comment}
-		Everything in this section is ignored. 
-		
-		Nothing between \begin{comment}
-		and \end{comment} is typeset.
+		Everything in this section is ignored,
+                right up until the line reading:
 	\end{comment}
 	\end{verbatimtab}
-	\item[]<4-> That code contains an error; who know where?
 	\end{itemize}
 \end{frame}
 
@@ -270,6 +267,7 @@ Hello, World.
 		\end{align*}
 	\end{multicols}
 	\item[]<4-> Note: The Align environment enters math mode automatically.
+        \item[]<4-> Align is defined in the package \verb|amsmath|. You will need to include the line \verb|\usepackage{amsmath}| in your preamble.
 \end{itemize}
 \end{frame}
 
