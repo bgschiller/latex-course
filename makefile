@@ -23,7 +23,7 @@ student: book worksheet slides
 	cp latex_slides.pdf student_files/
 	cp vangogh_shoes.jpg student_files/
 	cp latex_worksheet.pdf student_files/
-	zip latexcourse.zip student_files/
+	zip -r latexcourse.zip student_files/
 
 #remove intermediate and by-product files
 neat:
